@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0">
+	<title>查看天气</title>
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="lib/zepto/zepto.min.js"></script>
+	<script src="lib/zepto/fx.js"></script>
+	<script src="lib/zepto/fx_methods.js"></script>
+	<script src="lib/zepto/touch.js"></script>
+	<script src="lib/art-template/template-web.js"></script>
+	<script src="lib/iscroll/iscroll.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<div class="container">
+		<header class="header" id="head">
+			
+		</header>
+		<!-- 天气简介 -->
+		<section class="forecast">
+			<div id="wrapper">
+				<ul id="wList">
+				</ul>
+			</div>
+		</section>
+		<!-- 今天天气动画 -->
+		<section class="move">
+			<img src="images/cloud1.png" class="cloud cloud1">
+			<img src="images/cloud2.png" class="cloud cloud2">
+			<!-- 晴朗 -->
+			<div class="sunny">
+				<span></span>
+			</div>
+			<div class="sun">
+				<span></span>
+			</div>
+			<!-- 雨天 -->
+			<div class="rainy">
+				<span></span>
+				<img src="images/rain3.png" alt="">
+			</div> 
+			<div class="rain">
+				<img src="images/rain2.png">
+				<img src="images/rain2.png">
+			</div>
+			<!-- 多云 -->
+			<div class="cloudy">
+				<img src="images/cloudy.png" alt="">
+				<img src="images/cloudy.png" alt="">
+			</div>
+		</section>
+	</div>
+
+	<script type="text/html" id="dayTpl">
+		<% for(var i=0;i<14;i++){ %>
+		<li data="<%=list[i].weather %>">
+			<span class="date"><%=list[i].date %></span>
+			<span class="temp"><%=list[i].temp %></span>
+			<span class="wind"><%=list[i].wind %></span>
+			<span class="icon" data="<%=list[i].weather %>"></span>
+		</li>
+		<% } %>
+	</script>
+
+	<script type="text/html" id="todayTpl">
+		<h3>广州</h3>
+		<p class="degree"><%=list[0].temp %></p>
+		<p class="weather"><%=list[0].weather %></p>
+	</script>
+</body>
+</html>

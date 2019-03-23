@@ -1,0 +1,39 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	font-family: "Microsoft Yahei",sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+ul,ol {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #333;
+}
+.container {
+	min-width: 320px;
+	max-width: 640px;
+	margin: 0 auto;
+	width: 100%;
+	background-color: #fff;
+	overflow: hidden;
+}
+.clearfix::before,
+.clearfix::after {
+  content:"";
+  display: table;
+}
+.clearfix::after {
+	clear: both;
+}

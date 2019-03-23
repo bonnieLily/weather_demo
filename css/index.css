@@ -1,0 +1,385 @@
+.header {
+	width: 100%;
+	min-height: 450px;
+	background: url(../images/gz.jpg) no-repeat center;
+	background-size: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 10px 10px 0 10px;
+	z-index: 10;
+}
+
+.header h3 {
+	color: #ffb0a1;
+	font-size: 15px;
+}
+.header p {
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	font-size: 18px;
+	transform: translateX(-50%);
+	color: #fff;
+	text-shadow: 1px 1px 3px #480096;
+	letter-spacing: 2px;
+}
+.header p.degree {
+	font-size: 26px;
+	top: 66px;
+	animation: weather 2s linear infinite alternate;
+	z-index: 1000;
+}
+
+@keyframes weather {
+	from {
+		top: 54px;
+	}
+	to {
+		top: 70px;
+	}
+}
+
+/*简约介绍未来天气*/
+
+.forecast {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	padding: 460px 10px 10px 10px;
+	overflow: hidden;
+	z-index: 3;
+}
+
+.forecast div {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.forecast div ul {
+	padding-bottom: 10px;
+}
+.forecast div ul .today {
+	background-color: rgba(8,0,255,.4);
+	box-shadow: 0 0 4px #ccc;
+	color: #fff;
+}
+
+.forecast div ul li {
+	border-radius: 6px;
+	padding: 10px 10px;
+	font-size: 14px;
+	border-bottom: 1px solid #ccc;
+}
+
+.forecast div ul li .temp {
+	float: right;
+}
+
+.forecast div ul li .wind {
+	margin-left: 18px;
+}
+
+.forecast div ul li .icon {
+	font-family: "icomoon";
+	padding: 0 10px;
+	font-size: 18px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
+	.header {
+		height: 450px;
+	}
+	.forecast {
+		padding: 450px 10px 10px 10px;
+	}
+}
+
+@media screen and (min-width: 375px) and (max-width: 414px) {
+	.header {
+		height: 500px;
+	}
+	.forecast {
+		padding: 500px 10px 10px 10px;
+	}
+}
+
+/*===天气动画===*/
+
+.move {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.move .cloud1 {
+	position: absolute;
+	top: 200px;
+	left: 0;
+	width: 50px;
+	height: 50px;
+	opacity: 1;
+	transform: translateX(10px);
+	animation: cloud1 8s linear infinite alternate;
+	z-index: 1001;
+}
+
+.move .cloud2 {
+	position: absolute;
+	top: 170px;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	transform: translateX(-10px);
+	opacity: 0.7;
+	animation: cloud2 14s linear infinite alternate;
+	z-index: 1001;
+}
+
+/*属于当前的动画==晴天时*/
+.move .sunny {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(91,90,90,.4);
+	z-index: 1001;
+	display: none;
+}
+.move .sunny span::before {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: 80px;
+	height: 80px;
+	transform: translate(-50%,-50%);
+	background-color: rgba(255,255,255,1);
+	box-shadow: 0 0 30px rgba(255,255,255,1);
+	border-radius: 50%;
+	z-index: 1000;
+	animation: sunny 2s infinite alternate;
+}
+.move .sunny span::after {
+	content: "";
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	width: 120px;
+	height: 120px;
+	transform: translate(-50%,-50%);
+	background-color: rgba(255,255,255,0.1);
+	box-shadow: 0 0 20px rgba(255,255,255,0.1);
+	border-radius: 50%;
+	z-index: 999;
+	animation: sunny 1s linear 1s infinite alternate;
+}
+
+/*晴天动画之后*/
+.sun {
+	display: none;
+}
+.sun span::after {
+	content: "";
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	background-color: rgba(255,255,255,1);
+	border-radius: 50%;
+	z-index: 999;
+	top: 146px;
+	left: 50%;
+	transform: translateX(-50%);
+	box-shadow: 0 0 6px #fff;
+	animation: sun1 1.6s infinite alternate;
+}
+.sun span::before {
+	content: "";
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	background-color: rgba(255,255,255,.4);
+	border-radius: 50%;
+	z-index: 999;
+	top: 146px;
+	left: 50%;
+	transform: translate(-50%,-20%);
+	box-shadow: 0 0 20px #fff;
+	animation: sun2 2s infinite alternate;
+}
+
+/*属于当前的动画==雨天时*/
+.move .rainy {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(91,90,90,.4);
+	z-index: 1001;
+	display: none;
+}
+
+.move .rainy span {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100px;
+	height: 100px;
+	background: url('../images/rain1.png') no-repeat;
+	background-size: contain;
+	z-index: 999;
+}
+.move .rainy img {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100px;
+	height: 100px;
+	opacity: 0.9;
+	z-index: 990;
+	animation: rain1 1s infinite;
+}
+
+/*雨天动画之后*/
+.rain {
+	display: none;
+}
+.rain img {
+	position: absolute;
+	width: 260px;
+	left: 50%;
+	top: 80px;
+	z-index: 999;
+	opacity: 0.6;
+}
+.rain img:first-child {
+	transform: translate(-60%, 10%);
+	animation: rain2 2s infinite ;
+}
+.rain img:last-child {
+	transform: translate(-40%, -10%);
+	animation: rain3 3s linear infinite ;
+}
+
+/*多云动画*/
+.move .cloudy {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(91,90,90,.4);
+	z-index: 1001;
+	display: none;
+}
+.move .cloudy img {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 100px;
+	height: 100px;
+}
+.move .cloudy img:first-child {
+	width: 76px;
+	height: 76px;
+	animation: cloudy 2.2s forwards;
+}
+
+
+@keyframes cloud1 {
+	from {
+		opacity: 1;
+		transform: translateX(10px);
+	}
+	to {
+		opacity: 0.6;
+		transform: translateX(100px);
+	}
+}
+
+@keyframes cloud2 {
+	from {
+		transform: translateX(-10px);
+	}
+	to {
+		transform: translateX(-300px);
+	}
+}
+
+@keyframes sunny {
+	from{
+		transform: translate(-50%,-50%) scale(0.9);
+	}
+	to {
+		transform: translate(-50%,-50%) scale(1);
+	}
+}
+
+@keyframes sun1 {
+	from {
+		transform: translateX(-50%) scale(1);
+	}
+	to {
+		transform: translateX(-50%) scale(0.8);
+	}
+}
+
+@keyframes sun2 {
+	from {
+		transform: translate(-50%,-20%) scale(1);
+	}
+	to {
+		transform: translate(-50%,-20%) scale(0.8);
+	}
+}
+
+@keyframes rain1 {
+	from{
+		transform: translate(-50%,-50%);
+	}
+	to {
+		transform: translate(-58%,-40%);
+		opacity: 0.8;
+	}
+}
+
+@keyframes rain2 {
+	from {
+		transform: translate(-60%, -10%);
+	}
+	to {
+		transform: translate(-60%, 10%);
+	}
+}
+
+@keyframes rain3 {
+	from {
+		transform: translate(-40%, -18%);
+	}
+	to {
+		transform: translate(-40%, 10%);
+	}
+}
+
+@keyframes cloudy {
+	from {
+		transform: translate(10%,-50%);
+	}
+	to {
+		transform: translate(-96%,-50%);
+	}
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/fonts/icomoon.eot?92mbxa');
+  src:  url('../fonts/fonts/icomoon.eot?92mbxa#iefix') format('embedded-opentype'),
+    url('../fonts/fonts/icomoon.ttf?92mbxa') format('truetype'),
+    url('../fonts/fonts/icomoon.woff?92mbxa') format('woff'),
+    url('../fonts/fonts/icomoon.svg?92mbxa#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
